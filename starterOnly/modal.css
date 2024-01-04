@@ -481,6 +481,40 @@ footer {
   margin: 0 20px;
 }
 
+.error-message {
+  color: red;
+  font-size: 10px;
+  margin: 5px 0;
+}
+
+.error-field {
+  border-color: red;
+}
+
+.modal-form {
+  display: block;
+}
+
+.modal-finish {
+  height: 600px;
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-finish-text {
+  font-size: 36px;
+  text-align: center;
+}
+
+.modal-finish-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;

@@ -24,6 +24,29 @@ const quantity = document.querySelector("#quantity");
 const locations = document.querySelectorAll("input[name='location']");
 const checkbox = document.querySelector("#checkbox1");
 
+// Objet pour stocker l'état de validation de chaque élément de formulaire
+const validationObj = {
+  firstName: false,
+  lastName: false,
+  email: false,
+  birthdate: false,
+  quantity: false,
+  checkbox: true,
+
+// Vérification de la validité des données à l'aide de la méthode 'isValid'
+isValid() {
+  return (
+    this.firstName &&
+    this.lastName &&
+    this.email &&
+    this.birthdate &&
+    this.quantity &&
+    isCityValid() &&
+    this.checkbox
+  );
+ }
+};
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
