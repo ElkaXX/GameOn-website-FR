@@ -47,6 +47,18 @@ isValid() {
  }
 };
 
+// Validation des données en temps réel
+firstName.addEventListener("input", validateFirstName);
+lastName.addEventListener("input", validateLastName);
+email.addEventListener("input", validateEmail);
+birthdate.addEventListener("input", validateBirthdate);
+quantity.addEventListener("input", validateQuantity);
+checkbox.addEventListener("change", validatePolicy);
+
+locations.forEach((item) => {
+  item.addEventListener("change", validateCity);
+});
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
