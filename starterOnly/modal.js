@@ -62,6 +62,40 @@ locations.forEach((item) => {
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// validation function FirstName
+function validateFirstName() {
+  clearError(firstName);
+  validationObj.firstName = true;
+
+  if (firstName.value === "") {
+    displayError(firstName, "Entrez votre prénom");
+    validationObj.firstName = false;
+  } else if (firstName.value.length < 2) {
+    displayError(
+      firstName,
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom"
+    );
+    validationObj.firstName = false;
+  }
+}
+
+// validation function LastName
+function validateLastName() {
+  clearError(lastName);
+  validationObj.lastName = true;
+
+  if (lastName.value === "") {
+    displayError(lastName, "Entrez votre nom");
+    validationObj.lastName = false;
+  } else if (lastName.value.length < 2) {
+    displayError(
+      lastName,
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom"
+    );
+    validationObj.lastName = false;
+  }
+}
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
