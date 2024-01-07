@@ -61,6 +61,19 @@ locations.forEach((item) => {
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalCloseBtn.addEventListener("click", closeModal);
+modalFinishBtn.addEventListener("click", closeModalFinish);
+modalForm.addEventListener("submit", submitModal);
+
+function validateForm() {
+  validateFirstName();
+  validateLastName();
+  validateEmail();
+  validateBirthdate();
+  validateQuantity();
+  validateCity();
+  validatePolicy();
+}
 
 // validation function FirstName
 function validateFirstName() {
@@ -94,6 +107,78 @@ function validateLastName() {
     );
     validationObj.lastName = false;
   }
+}
+
+// validation function Email
+function validateEmail() {
+  clearError(email);
+  validationObj.email = true;
+
+  if (email.value === "") {
+    displayError(email, "Entrez email");
+    validationObj.email = false;
+    //  une expression régulière pour valider une adresse e-mail
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    displayError(email, "Email doit être valide");
+    validationObj.email = false;
+  }
+}
+
+// validation function Birthdate
+function validateBirthdate() {
+  clearError(birthdate);
+  validationObj.birthdate = true;
+
+  if (birthdate.value === "") {
+    displayError(birthdate, "Vous devez entrer votre date de naissance");
+    validationObj.birthdate = false;
+  } else if (!isValidDate(birthdate.value)) {
+    displayError(birthdate, "La date de naissance n'est pas valide");
+    validationObj.birthdate = false;
+  } else if (!isPersonOldEnough(birthdate.value, 16)) {
+    displayError(birthdate, "Vous devez avoir au moins 16 ans");
+    validationObj.birthdate = false;
+  }
+}
+
+// validation function Quantity
+function validateQuantity() {
+  clearError(quantity);
+  validationObj.quantity = true;
+
+  if (quantity.value === "") {
+    displayError(quantity, "Entrez la quantité");
+    validationObj.quantity = false;
+  } else if (+quantity.value < 0 || +quantity.value > 99) {
+    displayError(quantity, "La quantité doit être comprise entre 0 et 99");
+    validationObj.quantity = false;
+  }
+}
+
+// validation function Location
+function validateCity() {
+  clearError(locations[0]);
+  if (!isCityValid()) {
+    displayError(locations[0], "Vous devez choisir une option");
+  }
+}
+
+// validation function Policy
+function validatePolicy() {
+  clearError(checkbox);
+  validationObj.checkbox = true;
+
+  if (!checkbox.checked) {
+    displayError(
+      checkbox,
+      "Vous devez vérifier que vous acceptez les termes et conditions"
+    );
+    validationObj.checkbox = false;
+  }
+}
+
+function isCityValid() {
+  return Array.from(locations).some((item) => item.checked);
 }
 
 // launch modal form
