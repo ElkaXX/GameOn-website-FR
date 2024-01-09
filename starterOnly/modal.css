@@ -506,6 +506,7 @@ footer {
 .modal-finish-text {
   font-size: 36px;
   text-align: center;
+  display: block;
 }
 
 .modal-finish-btn {

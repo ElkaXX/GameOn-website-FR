@@ -184,8 +184,10 @@ function validatePolicy() {
   }
 }
 
+//Vérifier si au moins un lieu (city) a été sélectionné. 
 function isCityValid() {
-  return Array.from(locations).some((item) => item.checked);
+  // Array.from(locations) convertit une collection de boutons radio en "array".
+  return Array.from(locations).some((item) => item.checked); // La méthode some() vérifie s'il existe un élément avec l'indicateur "checked".
 }
 
 // Effacement des valeurs des champs de formulaire à l'aide de la fonction clearForm()
