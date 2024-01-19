@@ -47,7 +47,18 @@ isValid() {
   );
  }
 };
+// Validation des données en temps réel
+firstName.addEventListener("input", validateFirstName);
+lastName.addEventListener("input", validateLastName);
+email.addEventListener("input", validateEmail);
+birthdate.addEventListener("input", validateBirthdate);
+quantity.addEventListener("input", validateQuantity); //Définit l'écouteur d'événement pour le champ "quantité" sur l'événement "input", en appelant la fonction "validateQuantity".
+checkbox.addEventListener("change", validatePolicy);
 
+//Écouteur d'événements pour chaque élément de la collection "locations" à l'aide de la méthode "forEach"
+locations.forEach((item) => {
+  item.addEventListener("change", validateCity);
+});
 // launch modal event
 
 //Un écouteur pour l'événement "click" est ajouté. Avec cliquer sur l'un de ces boutons, la fonction "launchModal" est appelée.
